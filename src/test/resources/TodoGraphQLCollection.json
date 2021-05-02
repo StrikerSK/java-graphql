@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "2ec82444-faa6-4d21-afde-8e9820541fce",
+		"name": "Todo Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "mutations",
+			"item": [
+				{
+					"name": "createTodo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation createTodo ($name: String!, $description: String!, $done: Boolean) {\n    createTodo (name: $name, description: $description, done: $done) {\n        id\n        name\n        description\n        done\n    }\n}",
+								"variables": "{\n  \"name\": \"Todo Todo\",\n  \"description\": \"Todo Todo\",\n  \"done\": true\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTodo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation updateTodo ($id: Int!, $name: String!, $description: String!, $done: Boolean!) {\n    updateTodo (id: $id, name: $name, description: $description, done: $done) {\n        id\n        name\n        description\n        done\n    }\n}",
+								"variables": "{\n  \"id\": 555,\n  \"name\": \"Todo Todo\",\n  \"description\": \"Todo Todo\",\n  \"done\": true\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTodo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "mutation deleteTodo ($id: Int!) {\n    deleteTodo (id: $id)\n}",
+								"variables": "{\n  \"id\": 555\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "queries",
+			"item": [
+				{
+					"name": "todo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query todo ($id: Int!) {\n    todo (id: $id) {\n        id\n        name\n        description\n        done\n    }\n}",
+								"variables": "{\n  \"id\": 555\n}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "todos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query todos {\n    todos {\n        id\n        name\n        description\n        done\n    }\n}",
+								"variables": "{}"
+							}
+						},
+						"url": {
+							"raw": "{{url}}",
+							"host": [
+								"{{url}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:8080/graphql"
+		}
+	]
+}

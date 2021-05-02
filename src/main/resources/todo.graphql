@@ -1,0 +1,15 @@
+schema{
+    query: Query
+}
+
+type Query{
+    findTodo(id: Int!): Todo
+    allStudents: [Todo]
+}
+
+type Todo {
+    id: Int!
+    name: String!
+    description: String!
+    done: Boolean
+}
