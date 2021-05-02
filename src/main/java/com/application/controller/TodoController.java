@@ -1,4 +1,4 @@
-package com.application.graphql;
+package com.application.controller;
 
 import com.application.graphql.service.GraphQLService;
 import graphql.ExecutionResult;

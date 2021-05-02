@@ -2,7 +2,7 @@ package com.application.graphql.resolver;
 
 import com.application.graphql.entity.TodoEntity;
 import com.application.graphql.service.ITodoService;
-import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import graphql.kickstart.tools.GraphQLQueryResolver;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
