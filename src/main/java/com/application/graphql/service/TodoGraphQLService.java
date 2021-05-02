@@ -1,13 +1,12 @@
 package com.application.graphql.service;
 
-import com.application.graphql.resolver.TodoFetcher;
+import com.application.graphql.fetcher.TodoFetchers;
 import graphql.GraphQL;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
 import graphql.schema.idl.SchemaParser;
 import graphql.schema.idl.TypeDefinitionRegistry;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
@@ -19,15 +18,17 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 
 @Service
-public class GraphQLService {
+public class TodoGraphQLService {
 
-	@Autowired
-	private TodoFetcher todoFetcher;
+	private final TodoFetchers todoFetchers;
+	private GraphQL graphQL;
 
-	@Value("classpath:todo.graphql")
+	@Value("classpath:types.graphqls")
 	private Resource resource;
 
-	private GraphQL graphQL;
+	public TodoGraphQLService(TodoFetchers todoFetchers) {
+		this.todoFetchers = todoFetchers;
+	}
 
 	@PostConstruct
 	public void loadSchema() throws IOException {
@@ -47,7 +48,8 @@ public class GraphQLService {
 
 		return RuntimeWiring.newRuntimeWiring()
 				.type("Query", builder -> builder
-						.dataFetcher("findTodo", todoFetcher))
+						.dataFetcher("todo", todoFetchers.getTodo())
+						.dataFetcher("todos", todoFetchers.getTodos()))
 				.build();
 
 	}

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class MockedTodoService implements ITodoService {
+public class TodoMockedService implements ITodoService {
 
-	Logger LOG = LoggerFactory.getLogger(MockedTodoService.class);
+	Logger LOG = LoggerFactory.getLogger(TodoMockedService.class);
 
 	@Override
 	public TodoEntity getTodo(Long id) {

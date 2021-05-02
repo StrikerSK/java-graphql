@@ -21,9 +21,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{GRAPHQL_URL}}",
 							"host": [
-								"{{url}}"
+								"{{GRAPHQL_URL}}"
 							]
 						}
 					},
@@ -42,9 +42,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{GRAPHQL_URL}}",
 							"host": [
-								"{{url}}"
+								"{{GRAPHQL_URL}}"
 							]
 						}
 					},
@@ -63,9 +63,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{GRAPHQL_URL}}",
 							"host": [
-								"{{url}}"
+								"{{GRAPHQL_URL}}"
 							]
 						}
 					},
@@ -89,9 +89,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{GRAPHQL_URL}}",
 							"host": [
-								"{{url}}"
+								"{{GRAPHQL_URL}}"
 							]
 						}
 					},
@@ -110,9 +110,55 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}",
+							"raw": "{{GRAPHQL_URL}}",
 							"host": [
-								"{{url}}"
+								"{{GRAPHQL_URL}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Atlernative",
+			"item": [
+				{
+					"name": "Find Todo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    todo (id: 1) {\n        id\n        name\n        description\n        done\n    }\n}"
+						},
+						"url": {
+							"raw": "{{ALTERNATIVE_URL}}",
+							"host": [
+								"{{ALTERNATIVE_URL}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find Todos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    todos {\n        id\n        name\n        description\n        done\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ALTERNATIVE_URL}}",
+							"host": [
+								"{{ALTERNATIVE_URL}}"
 							]
 						}
 					},
@@ -143,8 +189,16 @@
 	],
 	"variable": [
 		{
-			"key": "url",
-			"value": "localhost:8080/graphql"
+			"key": "HOST_URL",
+			"value": "localhost:8080"
+		},
+		{
+			"key": "GRAPHQL_URL",
+			"value": "{{HOST_URL}}/graphql"
+		},
+		{
+			"key": "ALTERNATIVE_URL",
+			"value": "{{HOST_URL}}/alternative"
 		}
 	]
 }
